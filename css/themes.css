@@ -135,7 +135,7 @@
 
   /* === RADIUS === */
   /* Theme-agnostic: same across all themes */
-  --radius-sm: 3px;                   /* Subtle rounding: small buttons, chips */
+  --radius-sm: 2px;                   /* Subtle rounding: small buttons, chips, thumbnails */
   --radius-md: 4px;                   /* Default rounding: inputs, cards, code blocks */
 }
 
