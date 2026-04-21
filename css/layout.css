@@ -1,0 +1,50 @@
+/**
+ * Shared Layout Primitives for stoll.studio sites
+ *
+ * Structural layout classes shared across all consuming sites
+ * (stoll.studio, teaching.stoll.studio, intent.stoll.studio).
+ *
+ * Load after themes.css — depends on --space-* tokens.
+ */
+
+/* ===== COLUMN GRIDS ===== */
+/* Nest inside content containers (e.g. .two-col-content) for multi-column flows. */
+
+.columns {
+  display: grid;
+  gap: var(--space-lg);
+  margin: var(--space-lg) 0;
+  align-items: start;
+}
+
+.columns-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.columns-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.columns-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.columns-1-2 {
+  grid-template-columns: 1fr 2fr;
+}
+
+.columns-2-1 {
+  grid-template-columns: 2fr 1fr;
+}
+
+@media (max-width: 768px) {
+  .columns-2,
+  .columns-3,
+  .columns-1-2,
+  .columns-2-1 {
+    grid-template-columns: 1fr;
+  }
+  .columns-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}

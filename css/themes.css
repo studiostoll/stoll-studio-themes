@@ -132,6 +132,11 @@
 
   /* Container */
   --container-max-width: 72rem;       /* Wide layout for better text flow */
+
+  /* === RADIUS === */
+  /* Theme-agnostic: same across all themes */
+  --radius-sm: 3px;                   /* Subtle rounding: small buttons, chips */
+  --radius-md: 4px;                   /* Default rounding: inputs, cards, code blocks */
 }
 
 /* ===== DARK THEME ===== */

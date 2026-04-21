@@ -4,8 +4,12 @@ Shared theming system for all stoll.studio websites. One source of truth for col
 
 ## Contents
 
-- `css/themes.css` - Theme definitions with CSS custom properties
+- `css/themes.css` - Token definitions and per-theme overrides (colors, typography, spacing, radius)
+- `css/layout.css` - Shared layout primitives (column grids)
+- `css/components.css` - Shared UI components (buttons)
 - `js/theme-switcher.js` - URL-based theme switching logic
+- `tokens.json` - Design tokens in Tokens Studio format (Figma ↔ CSS bridge)
+- `figma-plugin-API/` - Figma plugin reference for token sync
 
 ## Available Themes
 
@@ -18,6 +22,7 @@ Shared theming system for all stoll.studio websites. One source of truth for col
 
 - [stoll.studio](https://stoll.studio) - Personal portfolio
 - [teaching.stoll.studio](https://teaching.stoll.studio) - Teaching resources
+- [intent.stoll.studio](https://intent.stoll.studio) - Brand Intent documentation
 
 ## Usage
 
@@ -36,7 +41,11 @@ git submodule add https://github.com/yourusername/stoll-studio-themes.git _theme
 
 ```html
 <link rel="stylesheet" href="{{ '/_themes/css/themes.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/_themes/css/layout.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/_themes/css/components.css' | relative_url }}">
 ```
+
+Load order matters: `themes.css` first (tokens), then `layout.css` and `components.css` which reference them.
 
 #### 2. Add Critical Inline Script (Prevents FOUC)
 
@@ -166,6 +175,24 @@ git push
 
 - Base scale: `--space-xs` through `--space-3xl`
 - Component spacing: `--space-gap-small`, `--space-container-padding`, etc.
+
+### Radius
+
+Theme-agnostic (same values across all themes):
+
+- `--radius-sm` (3px): subtle rounding — small buttons, chips
+- `--radius-md` (4px): default rounding — inputs, cards, code blocks
+
+### Layout (`layout.css`)
+
+- `.columns`, `.columns-2`, `.columns-3`, `.columns-4`, `.columns-1-2`, `.columns-2-1`
+- Unified mobile breakpoint: 768px (all collapse to 1 column except `.columns-4` → 2)
+- Default `align-items: start` (columns hug the top, don't stretch to tallest)
+
+### Components (`components.css`)
+
+- `.btn-primary` — filled button using `--color-accent-2` background, `--color-surface` text
+- `.btn-ghost` — understated button with `--color-border-strong` underline
 
 ## License
 

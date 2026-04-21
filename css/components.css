@@ -1,0 +1,45 @@
+/**
+ * Shared UI Components for stoll.studio sites
+ *
+ * Themeable UI primitives shared across all consuming sites
+ * (stoll.studio, teaching.stoll.studio, intent.stoll.studio).
+ *
+ * Load after themes.css — depends on --color-*, --font-*, --radius-* tokens.
+ */
+
+/* ===== BUTTONS ===== */
+
+.btn-primary {
+  font-family: var(--font-monospace);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  background: var(--color-accent-2);
+  color: var(--color-surface);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  opacity: 0.85;
+}
+
+.btn-ghost {
+  font-family: var(--font-monospace);
+  font-size: var(--font-size-small);
+  color: var(--color-tertiary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-border-strong);
+  padding-bottom: 0.1rem;
+  background: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.btn-ghost:hover,
+.btn-ghost:focus {
+  color: var(--color-primary);
+  opacity: 1;
+}
