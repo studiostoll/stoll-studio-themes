@@ -45,8 +45,9 @@
 }
 
 /* ===== CONSENT BAR ===== */
-/* Thin bar along the bottom edge. Both choices use the same button style,
-   so declining is exactly as easy as accepting. Driven by js/consent.js. */
+/* Thin bar along the bottom edge, same colors as the sticky bar (.bar).
+   Both choices look identical (underlined text, like .bar links), so
+   declining is exactly as easy as accepting. Driven by js/consent.js. */
 
 .consent-bar {
   position: fixed;
@@ -54,10 +55,9 @@
   right: 0;
   bottom: 0;
   z-index: 99990;
-  background: var(--color-surface);
-  border-top: 1px solid var(--color-divider);
+  background: var(--color-sticky-bar-bg);
+  color: var(--color-sticky-bar-text);
   font-size: var(--font-size-small);
-  color: var(--color-secondary);
 }
 .consent-bar[hidden] {
   display: none;
@@ -74,6 +74,27 @@
 }
 .consent-bar-text {
   margin: 0;
+  color: inherit;
+}
+.consent-bar a,
+.consent-bar button {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  text-decoration-thickness: 0.1em;
+}
+.consent-bar button {
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+.consent-bar button:hover,
+.consent-bar button:focus {
+  opacity: 0.75;
 }
 .consent-bar-actions {
   display: flex;

@@ -197,7 +197,7 @@ Theme-agnostic (same values across all themes):
 
 - `.btn-primary` — filled button using `--color-accent-2` background, `--color-surface` text
 - `.btn-ghost` — understated button with `--color-border-strong` underline
-- `.consent-bar` — thin fixed bar at the bottom for analytics consent, used with `js/consent.js`
+- `.consent-bar` — thin fixed bar at the bottom for analytics consent, used with `js/consent.js`. Uses the sticky bar tokens (`--color-sticky-bar-bg/-text`); both choices are plain underlined text buttons
 
 ### Fonts (`fonts.css`)
 
@@ -205,7 +205,7 @@ Hanken Grotesk (variable 100–900, roman + italic) and IBM Plex Mono (400/500/6
 
 ### Consent (`js/consent.js`)
 
-The site defines `window.loadAnalytics()` with its own tracking IDs and calls it in `<head>` only if `localStorage['consent-analytics'] === 'granted'`. It renders the bar markup (`[data-consent-bar]` with two `.btn-ghost` buttons `data-consent="denied"` / `"granted"`) and a footer link with `data-consent-open`. Declining removes first-party analytics cookies and reloads if consent was previously granted.
+The site defines `window.loadAnalytics()` with its own tracking IDs and calls it in `<head>` only if `localStorage['consent-analytics'] === 'granted'`. It renders the bar markup (`[data-consent-bar]` with two plain `<button>`s `data-consent="denied"` / `"granted"`) and a footer link with `data-consent-open`. Declining removes first-party analytics cookies and reloads if consent was previously granted.
 
 ## License
 
