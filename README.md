@@ -4,10 +4,12 @@ Shared theming system for all stoll.studio websites. One source of truth for col
 
 ## Contents
 
+- `css/fonts.css` - Self-hosted `@font-face` rules (files in `fonts/`, latin subset, OFL licensed)
 - `css/themes.css` - Token definitions and per-theme overrides (colors, typography, spacing, radius)
 - `css/layout.css` - Shared layout primitives (column grids)
-- `css/components.css` - Shared UI components (buttons)
+- `css/components.css` - Shared UI components (buttons, consent bar)
 - `js/theme-switcher.js` - URL-based theme switching logic
+- `js/consent.js` - Analytics consent bar logic
 - `tokens.json` - Design tokens in Tokens Studio format (Figma ↔ CSS bridge)
 - `figma-plugin-API/` - Figma plugin reference for token sync
 
@@ -40,6 +42,8 @@ git submodule add https://github.com/yourusername/stoll-studio-themes.git _theme
 #### 1. Include the CSS
 
 ```html
+<link rel="preload" href="{{ '/_themes/fonts/hanken-grotesk-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ '/_themes/css/fonts.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/_themes/css/themes.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/_themes/css/layout.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/_themes/css/components.css' | relative_url }}">
@@ -193,6 +197,15 @@ Theme-agnostic (same values across all themes):
 
 - `.btn-primary` — filled button using `--color-accent-2` background, `--color-surface` text
 - `.btn-ghost` — understated button with `--color-border-strong` underline
+- `.consent-bar` — thin fixed bar at the bottom for analytics consent, used with `js/consent.js`
+
+### Fonts (`fonts.css`)
+
+Hanken Grotesk (variable 100–900, roman + italic) and IBM Plex Mono (400/500/600), latin subset, served from the site itself. Do not load Google Fonts: it sends visitor IPs to Google without consent.
+
+### Consent (`js/consent.js`)
+
+The site defines `window.loadAnalytics()` with its own tracking IDs and calls it in `<head>` only if `localStorage['consent-analytics'] === 'granted'`. It renders the bar markup (`[data-consent-bar]` with two `.btn-ghost` buttons `data-consent="denied"` / `"granted"`) and a footer link with `data-consent-open`. Declining removes first-party analytics cookies and reloads if consent was previously granted.
 
 ## License
 

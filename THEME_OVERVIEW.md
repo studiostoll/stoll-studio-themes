@@ -147,6 +147,8 @@ This architecture means:
 | `--font-monospace` | IBM Plex Mono | IBM Plex Mono | IBM Plex Mono | IBM Plex Mono |
 | `--font-navigation` | IBM Plex Mono | IBM Plex Mono | IBM Plex Mono | IBM Plex Mono |
 
+Both families are self-hosted via `css/fonts.css` (files in `fonts/`, latin subset): Hanken Grotesk variable 100–900 roman + italic, IBM Plex Mono 400/500/600.
+
 ### Font Sizes (identical across all themes)
 
 | Token | Value | Pixel Equivalent |
